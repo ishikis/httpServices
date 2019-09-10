@@ -16,9 +16,10 @@ export class PostsComponent {
     })
 
   }
+
   createPost(input: HTMLInputElement) {
     const post = { title: input.value };
-    input.value ="";
+    input.value = "";
 
     this.http.post(this.url, JSON.stringify(post))
       .subscribe(x => {
@@ -28,5 +29,31 @@ export class PostsComponent {
       })
   }
 
+
+  updatePost(post) {
+    post.title = 'updated';
+
+    this.http.put(this.url + '/' + post.id, JSON.stringify(post))
+      .subscribe(x => {
+        console.log(x);
+      });;
+
+    // this.http.patch(this.url + '/' + post['id'], JSON.stringify({
+    //   title: 'updated'
+    // })).subscribe(x => {
+    //   console.log(x);
+    // });
+  }
+
+
+  deletePost(post) {
+    this.http.delete(this.url + '/' + post.id)
+      .subscribe(x => {
+        console.log(x);
+
+        let index = this.posts.indexOf(post);
+        this.posts.splice(index, 1);
+      });;
+  }
 
 }
