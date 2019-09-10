@@ -5,11 +5,13 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { PostsComponent } from './posts/posts.component';
+import { PostsWhitOutServicesComponent } from './posts-whit-out-services/posts-whit-out-services.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PostsComponent
+    PostsComponent,
+    PostsWhitOutServicesComponent
   ],
   imports: [
     BrowserModule,
